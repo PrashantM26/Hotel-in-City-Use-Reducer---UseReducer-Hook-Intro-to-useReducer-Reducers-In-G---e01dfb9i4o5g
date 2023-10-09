@@ -25,10 +25,11 @@ export default function Home() {
 
 
   useEffect(() => {
-    .then((response) => response.json())
-    .then((data) => {
-      dispatch({ type: "FETCH_SUCCESS", payload: data });
-    })
+    fetch("https://content.newtonschool.co/v1/pr/63b85bcf735f93791e09caf4/hotels")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      })
   }, []);
 
 
