@@ -42,7 +42,7 @@ function reducer(state, action) {
   }
 }
 
-function HomePage() {
+export default function Home() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [cityInput, setCityInput] = useState("");
 
@@ -56,37 +56,33 @@ function HomePage() {
   }, []);
 
  
-  const handleCityInput = (event) => {
+  const handleCityChange = (event) => {
     const cityName = event.target.value;
     setCityInput(cityName);
-    dispatch({ type: "FILTER", payload: cityName });
+    dispatch({ type: "FILTER", payload: city });
   };
 
   return (
-    <div>
+    <div className="App">
       <h1>Hotel List</h1>
       <input
         type="text"
         placeholder="Enter city name"
         value={cityInput}
-        onChange={handleCityInput}
+        onChange={handleCityChange}
       />
-      <ul>
-        {state.filteredHotels.map((hotel, index) => (
-          <li key={index}>{hotel.hotel_name}</li>
-        ))}
-      </ul>
+      {state.filteredHotels.map((hotel, index) => (
+        <p key={hotel.hotel_name}>{hotel.hotel_name}</p>
+      ))}
     </div>
   );
 }
 
-export default HomePage;
 
 
 
 
-
-export default function Home() {
+/*export default function Home() {
    const [state, dispatch] = useReducer(reducer, initialState);
    const [cityInput, setCityInput] = useState("");
 
@@ -119,5 +115,5 @@ export default function Home() {
      ))}
     </div>
   );
-}
+}*/
   
