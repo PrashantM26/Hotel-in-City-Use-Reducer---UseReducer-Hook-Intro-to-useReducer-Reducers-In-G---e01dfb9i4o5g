@@ -150,7 +150,7 @@ function reducer(state, action) {
       return state;
   }
 }
-export function App() {
+export default function Home() {
    const [state, dispatch] = useReducer(reducer, initialState);
    const [cityInput, setCityInput] = React.useState("");
 
@@ -181,11 +181,9 @@ export function App() {
         onChange={handleCityInputChange}
       />
      
-      <ul>
         {state.filteredHotels.map((hotel,index)=>(
-          <li key={index}>{hotel.hotel_name}</li>
-  ))}
-      </ul>
+          <p key={index}>{hotel.hotel_name}</p>
+        ))}
      
     </div>
   );
